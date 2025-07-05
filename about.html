@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="KrishiHub is a digital platform designed to support Indian farmers with weather forecasts, crop prices, government schemes, and modern farming techniques. Learn more about our mission and team.">
+  <title>About KrishiHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+  <!-- ========== Start Nav Section ========== -->
+
+  <header class="nav-section">
+    <div class="container">
+      <div class="logo">
+        <img src="Images/logo.webp" alt="" />
+      </div>
+
+      <nav class="navbar">
+        <div class="nav-links" id="navLinks">
+          <i class="ri-close-fill" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="index.html">features</a></li>
+            <li><a href="blog.html">blog</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="contact.html">contact</a></li>
+          </ul>
+        </div>
+        <i class="ri-menu-2-line" onclick="showMenu()"></i>
+      </nav>
+    </div>
+  </header>
+
+  <section class="banner">
+    <div class="banner-content">
+      <h1>Your Farming Companion</h1>
+      <p>
+        We’re here to support your journey — with updates, knowledge, and
+        care.
+      </p>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container about-container">
+      <div class="about-image">
+        <img src="Images/aboutv.webp" alt="Farming in India" />
+      </div>
+      <div class="about-content">
+        <h2>Who We Are</h2>
+        <p>
+          <strong>KrishiHub</strong> is a digital platform dedicated to
+          transforming Indian agriculture. Our mission is to provide real-time
+          weather forecasts, live mandi prices, access to government schemes,
+          agri news, and smart farming techniques — all in one place. We help
+          farmers make better decisions by bringing innovation directly to the
+          field.
+        </p>
+        <h3>Our Mission</h3>
+        <p>
+          To empower every Indian farmer with digital tools and trusted
+          resources that make farming more profitable, sustainable, and
+          efficient. We aim to bridge the gap between traditional methods and
+          modern innovations.
+        </p>
+        <a href="index.html">
+          <button class="bottom-btn">
+            Get Started <i class="ri-arrow-right-line"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer-section">
+    <div class="container grid grid-four-coln">
+      <div class="footer-content">
+        <h2 class="footer-head">KrishiHub</h2>
+        <p class="footer-para">
+          KrishiHub one-stop solution for <br />
+          all farming needs.
+        </p>
+        <div class="footer-icons">
+          <a href=""><i class="ri-instagram-line"></i></a>
+          <a href=""><i class="ri-whatsapp-line"></i></a>
+          <a href=""><i class="ri-youtube-line"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-part">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="weather.html">weather</a></li>
+          <li><a href="schemes.html">schemes</a></li>
+          <li><a href="index.html">crop rates</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-part">
+        <h3>Updates</h3>
+        <ul>
+          <li><a href="news.html">farming news</a></li>
+          <li><a href="Modern.html">modern techniques</a></li>
+          <li><a href="index.html">agri tips</a></li>
+          <li><a href="blog.html">blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-part">
+        <h3>Support</h3>
+        <ul>
+          <li>
+            <a href="contact.html">contact<i class="ri-customer-service-2-line"></i></a>
+          </li>
+          <li><a href="index.html">FAQ's</a></li>
+          <li><a href="about.html">helpdesk</a></li>
+          <li>
+            <a href="contact.html">feedback<i class="ri-feedback-line"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        Made for Farmers by 🎀 KrishiHub 🎀 <br />
+        all &copy Rights Reserved @2025
+      </p>
+    </div>
+  </footer>
+  <script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+    function hideMenu() {
+      navLinks.style.right = "-200px"
+    }
+  </script>
+</body>
+
+</html>

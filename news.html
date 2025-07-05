@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ताज़ा कृषि समाचार, सरकारी योजनाएँ, मंडी भाव, मौसम पूर्वानुमान और खेती से जुड़ी अपडेट्स सिर्फ KrishiHub पर। भारतीय किसानों के लिए समर्पित।" />
+    <title>कृषि समाचार - KrishiHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f3f4f6
+        }
+
+        .navbar {
+            background: #1e88e5;
+            height: 10vh;
+            padding: 1rem 4rem;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer
+        }
+
+        #news-section {
+            display: none;
+            padding: 2rem 1rem;
+            width: 100%
+        }
+
+        #news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: 0.2s;
+        }
+
+        .news-card:hover {
+            transform: scale(1.02)
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #ddd
+        }
+
+        .news-card-content {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem
+        }
+
+        .news-card h3 {
+            font-size: 1.1rem;
+            color: #2e7d32
+        }
+
+        .news-card p {
+            font-size: 0.95rem;
+            color: #333
+        }
+
+        .news-card a {
+            text-decoration: none;
+            color: #1e88e5;
+            font-weight: bold
+        }
+
+        .loading {
+            text-align: center;
+            color: #888;
+            font-size: 1rem
+        }
+
+        @media(max-width:500px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div> KrishiHub</div>
+        <a id="newsLink">📢 कृषि समाचार</a>
+    </div>
+
+    <div id="news-section">
+        <h2 style="text-align:center;margin-bottom:1.5rem;">📰 ताज़ा कृषि समाचार</h2>
+        <div id="news-container">
+            <p class="loading">समाचार लोड हो रहे हैं...</p>
+        </div>
+    </div>
+
+    <script>
+        const link = document.getElementById("newsLink"),
+            section = document.getElementById("news-section"),
+            container = document.getElementById("news-container");
+
+        link.onclick = () => {
+            section.style.display = "block";
+            container.innerHTML = '<p class="loading">समाचार लोड हो रहे हैं...</p>';
+
+            fetch("https://newsdata.io/api/1/latest?apikey=pub_e8512632cae64d21ac76c8225e308c3b&q=Agriculture%20news&language=hi&country=in&timezone=Asia/Kolkata")
+                .then(res => res.json())
+                .then(data => {
+                    container.innerHTML = "";
+                    (data.results || []).slice(0, 12).forEach(news => {
+                        const card = document.createElement("div");
+                        card.className = "news-card";
+                        card.innerHTML = `
+              ${news.image_url ? `<img src="${news.image_url}" alt="समाचार छवि">` : ''}
+              <div class="news-card-content">
+                <h3>${news.title}</h3>
+                <p>${news.description || 'विवरण उपलब्ध नहीं है।'}</p>
+                <a href="${news.link}" target="_blank">पूरा पढ़ें</a>
+              </div>`;
+                        container.appendChild(card);
+                    });
+                })
+                .catch(() => {
+                    container.innerHTML = "<p>समाचार लोड करने में त्रुटि हुई।</p>";
+                });
+        };
+    </script>
+
+</body>
+
+</html>
